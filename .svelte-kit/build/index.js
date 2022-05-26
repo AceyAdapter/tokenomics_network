@@ -8,7 +8,7 @@ const template = ({ head, body, assets, nonce }) => "<!DOCTYPE html>\n<html lang
 
 let read = null;
 
-set_paths({"base":"/portfolio","assets":""});
+set_paths({"base":"","assets":""});
 
 let default_protocol = 'https';
 
@@ -48,7 +48,7 @@ export class Server {
 			paths: { base, assets },
 			prefix: assets + '/_app/immutable/',
 			prerender: {
-				default: false,
+				default: true,
 				enabled: true
 			},
 			read,

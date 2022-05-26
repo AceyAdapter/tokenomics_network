@@ -2233,7 +2233,7 @@ function set_prerendering(value) {
 }
 const template = ({ head, body, assets: assets2, nonce }) => '<!DOCTYPE html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<link rel="icon" href="' + assets2 + '/favicon.png" />\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\n		' + head + "\n	</head>\n	<body>\n		<div>" + body + "</div>\n	</body>\n</html>\n";
 let read = null;
-set_paths({ "base": "/portfolio", "assets": "" });
+set_paths({ "base": "", "assets": "" });
 let default_protocol = "https";
 function override(settings) {
   default_protocol = settings.protocol || default_protocol;
@@ -2265,7 +2265,7 @@ class Server {
       paths: { base, assets },
       prefix: assets + "/_app/immutable/",
       prerender: {
-        default: false,
+        default: true,
         enabled: true
       },
       read,

@@ -1,9 +1,9 @@
 export const manifest = {
 	appDir: "_app",
-	assets: new Set(["favicon.png","img/daisyui.jpeg","img/sveltekit.png"]),
+	assets: new Set([".nojekyll","favicon.png","img/daisyui.jpeg","img/sveltekit.png"]),
 	mimeTypes: {".png":"image/png",".jpeg":"image/jpeg"},
 	_: {
-		entry: {"file":"start-2e18bf13.js","js":["start-2e18bf13.js","chunks/index-b6926417.js"],"css":[]},
+		entry: {"file":"start-13aea6af.js","js":["start-13aea6af.js","chunks/index-b6926417.js"],"css":[]},
 		nodes: [
 			() => import('./nodes/0.js'),
 			() => import('./nodes/1.js'),

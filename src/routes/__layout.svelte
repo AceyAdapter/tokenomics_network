@@ -1,6 +1,4 @@
 <script>
-    import Navbar from "../components/navbar.svelte";
-
     import "../app.css";
   </script>
 
@@ -22,6 +20,7 @@
       <div class="flex-none hidden lg:block">
         <ul class="menu menu-horizontal">
           <!-- Navbar menu content here -->
+          <li><a href="/">Home</a></li>
           <li><a href="/projects">Projects</a></li>
           <li><a href="/nmi">NMI Portfolio</a></li>
           <li><a href="/contact" class="btn btn-primary rounded">Contact Me</a></li>

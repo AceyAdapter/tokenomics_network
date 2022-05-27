@@ -13,4 +13,5 @@
         </div>
         <img src="{logo}" alt="SvelteKit" class="rounded-xl w-96 shadow-xl" />
     </div>
+    <a href="/about">About</a>
 </div>

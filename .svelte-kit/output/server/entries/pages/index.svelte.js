@@ -6,6 +6,7 @@ const Routes = create_ssr_component(($$result, $$props, $$bindings, slots) => {
         <div class="${"divider divider-horizontal mx-24 flex"}"><div class="${"text-purple-500"}">DaisyUI</div>
             <div class="${"text-3xl bold"}">+</div>
             <div class="${"text-orange-500"}">SvelteKit</div></div>
-        <img${add_attribute("src", logo, 0)} alt="${"SvelteKit"}" class="${"rounded-xl w-96 shadow-xl"}"></div></div>`;
+        <img${add_attribute("src", logo, 0)} alt="${"SvelteKit"}" class="${"rounded-xl w-96 shadow-xl"}"></div>
+    <a href="${"/about"}">About</a></div>`;
 });
 export { Routes as default };

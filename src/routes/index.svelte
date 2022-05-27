@@ -1,5 +1,6 @@
 <script>
     import logo from '../../static/img/daisyui.jpeg';
+    import svelte_logo from '../../static/img/sveltekit.png';
 </script>
 
 <div>
@@ -11,7 +12,7 @@
             <div class="text-3xl bold">+</div>
             <div class="text-orange-500">SvelteKit</div>
         </div>
-        <img src="{logo}" alt="SvelteKit" class="rounded-xl w-96 shadow-xl" />
+        <img src="{svelte_logo}" alt="SvelteKit" class="rounded-xl w-96 shadow-xl" />
     </div>
     <a href="/about">About</a>
 </div>

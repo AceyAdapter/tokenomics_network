@@ -3,7 +3,7 @@ export const manifest = {
 	assets: new Set([".nojekyll","favicon.png","img/daisyui.jpeg","img/sveltekit.png"]),
 	mimeTypes: {".png":"image/png",".jpeg":"image/jpeg"},
 	_: {
-		entry: {"file":"start-91011599.js","js":["start-91011599.js","chunks/index-b6926417.js"],"css":[]},
+		entry: {"file":"start-17435f3d.js","js":["start-17435f3d.js","chunks/index-b6926417.js"],"css":[]},
 		nodes: [
 			() => import('./nodes/0.js'),
 			() => import('./nodes/1.js'),

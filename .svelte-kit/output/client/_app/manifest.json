@@ -1,10 +1,6 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-<<<<<<< HEAD
-    "file": "start-17435f3d.js",
-=======
-    "file": "start-86367193.js",
->>>>>>> working
+    "file": "start-c12f276e.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
@@ -48,11 +44,7 @@
     ]
   },
   "src/routes/index.svelte": {
-<<<<<<< HEAD
-    "file": "pages/index.svelte-8abab2d3.js",
-=======
-    "file": "pages/index.svelte-f13539a2.js",
->>>>>>> working
+    "file": "pages/index.svelte-eb84a032.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,

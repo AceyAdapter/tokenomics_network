@@ -1,10 +1,6 @@
 <script>
-<<<<<<< HEAD
     import daisyui from '../../static/img/daisyui.jpeg';
-=======
-    import logo from '../../static/img/daisyui.jpeg';
     import svelte_logo from '../../static/img/sveltekit.png';
->>>>>>> working
 </script>
 
 <div>
@@ -16,11 +12,7 @@
             <div class="text-3xl bold">+</div>
             <div class="text-orange-500">SvelteKit</div>
         </div>
-<<<<<<< HEAD
-        <img src="{daisyui}" alt="SvelteKit" class="rounded-xl w-96 shadow-xl" />
-=======
         <img src="{svelte_logo}" alt="SvelteKit" class="rounded-xl w-96 shadow-xl" />
->>>>>>> working
     </div>
     <a href="/about">About</a>
 </div>

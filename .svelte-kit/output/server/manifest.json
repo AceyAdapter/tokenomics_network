@@ -4,7 +4,7 @@
     "src": ".svelte-kit/build/index.js",
     "isEntry": true,
     "imports": [
-      "_index-5f038599.js"
+      "_index-2835083a.js"
     ],
     "dynamicImports": [
       ".svelte-kit/build/hooks.js"
@@ -15,10 +15,10 @@
     "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "imports": [
-      "_index-5f038599.js"
+      "_index-2835083a.js"
     ],
     "css": [
-      "assets/entries/pages/__layout.svelte-ae8ea3f1.css"
+      "assets/entries/pages/__layout.svelte-a0753234.css"
     ]
   },
   ".svelte-kit/runtime/components/error.svelte": {
@@ -26,7 +26,7 @@
     "src": ".svelte-kit/runtime/components/error.svelte",
     "isEntry": true,
     "imports": [
-      "_index-5f038599.js"
+      "_index-2835083a.js"
     ]
   },
   "src/routes/contact.svelte": {
@@ -34,7 +34,11 @@
     "src": "src/routes/contact.svelte",
     "isEntry": true,
     "imports": [
-      "_index-5f038599.js"
+      "_index-2835083a.js",
+      "_wave-78e11b96.js"
+    ],
+    "assets": [
+      "assets/closeup-c9838a68.png"
     ]
   },
   "src/routes/index.svelte": {
@@ -42,10 +46,8 @@
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "imports": [
-      "_index-5f038599.js"
-    ],
-    "css": [
-      "assets/entries/pages/index.svelte-1f18158f.css"
+      "_index-2835083a.js",
+      "_wave-78e11b96.js"
     ]
   },
   "src/routes/nmi.svelte": {
@@ -53,7 +55,7 @@
     "src": "src/routes/nmi.svelte",
     "isEntry": true,
     "imports": [
-      "_index-5f038599.js"
+      "_index-2835083a.js"
     ]
   },
   "src/routes/projects.svelte": {
@@ -61,11 +63,20 @@
     "src": "src/routes/projects.svelte",
     "isEntry": true,
     "imports": [
-      "_index-5f038599.js"
+      "_index-2835083a.js"
     ]
   },
-  "_index-5f038599.js": {
-    "file": "chunks/index-5f038599.js"
+  "_index-2835083a.js": {
+    "file": "chunks/index-2835083a.js"
+  },
+  "_wave-78e11b96.js": {
+    "file": "chunks/wave-78e11b96.js",
+    "imports": [
+      "_index-2835083a.js"
+    ],
+    "css": [
+      "assets/wave-46443efd.css"
+    ]
   },
   ".svelte-kit/build/hooks.js": {
     "file": "chunks/hooks-1c45ba0b.js",

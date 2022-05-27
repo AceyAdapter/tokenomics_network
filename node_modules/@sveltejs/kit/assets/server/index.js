@@ -115,7 +115,7 @@ const text_types = new Set([
 ]);
 
 /**
- * Decides how the body should be parsed based on its mime type
+ * Decides how the body should be parsed based on its mime type. Should match what's in parse_body
  *
  * @param {string | undefined | null} content_type The `content-type` header of a request/response.
  * @returns {boolean}
@@ -885,11 +885,33 @@ function base64(bytes) {
 /** @type {Promise<void>} */
 let csp_ready;
 
-const array = new Uint8Array(16);
+/** @type {() => string} */
+let generate_nonce;
 
-function generate_nonce() {
-	crypto.getRandomValues(array);
-	return base64(array);
+/** @type {(input: string) => string} */
+let generate_hash;
+
+if (typeof crypto !== 'undefined') {
+	const array = new Uint8Array(16);
+
+	generate_nonce = () => {
+		crypto.getRandomValues(array);
+		return base64(array);
+	};
+
+	generate_hash = sha256;
+} else {
+	// TODO: remove this in favor of web crypto API once we no longer support Node 14
+	const name = 'crypto'; // store in a variable to fool esbuild when adapters bundle kit
+	csp_ready = import(name).then((crypto) => {
+		generate_nonce = () => {
+			return crypto.randomBytes(16).toString('base64');
+		};
+
+		generate_hash = (input) => {
+			return crypto.createHash('sha256').update(input, 'utf-8').digest().toString('base64');
+		};
+	});
 }
 
 const quoted = new Set([
@@ -992,7 +1014,7 @@ class Csp {
 	add_script(content) {
 		if (this.#script_needs_csp) {
 			if (this.#use_hashes) {
-				this.#script_src.push(`sha256-${sha256(content)}`);
+				this.#script_src.push(`sha256-${generate_hash(content)}`);
 			} else if (this.#script_src.length === 0) {
 				this.#script_src.push(`nonce-${this.nonce}`);
 			}
@@ -1003,7 +1025,7 @@ class Csp {
 	add_style(content) {
 		if (this.#style_needs_csp) {
 			if (this.#use_hashes) {
-				this.#style_src.push(`sha256-${sha256(content)}`);
+				this.#style_src.push(`sha256-${generate_hash(content)}`);
 			} else if (this.#style_src.length === 0) {
 				this.#style_src.push(`nonce-${this.nonce}`);
 			}
@@ -1231,7 +1253,11 @@ async function render_response({
 			hydrate: ${resolve_opts.ssr && page_config.hydrate ? `{
 				status: ${status},
 				error: ${serialize_error(error)},
-				nodes: [${branch.map(({ node }) => node.index).join(', ')}],
+				nodes: [
+					${(branch || [])
+					.map(({ node }) => `import(${s(options.prefix + node.entry)})`)
+					.join(',\n\t\t\t\t\t\t')}
+				],
 				params: ${devalue(event.params)},
 				routeId: ${s(event.routeId)}
 			}` : 'null'}
@@ -2106,11 +2132,6 @@ async function load_node({
 			props: shadow.body || {},
 			routeId: event.routeId,
 			get session() {
-				if (node.module.prerender ?? options.prerender.default) {
-					throw Error(
-						'Attempted to access session from a prerendered page. Session would never be populated.'
-					);
-				}
 				uses_credentials = true;
 				return $session;
 			},

@@ -110,6 +110,23 @@ function normalize_path(path, trailing_slash) {
 	return path;
 }
 
+/**
+ * Hash using djb2
+ * @param {import('types').StrictBody} value
+ */
+function hash(value) {
+	let hash = 5381;
+	let i = value.length;
+
+	if (typeof value === 'string') {
+		while (i) hash = (hash * 33) ^ value.charCodeAt(--i);
+	} else {
+		while (i) hash = (hash * 33) ^ value[--i];
+	}
+
+	return (hash >>> 0).toString(36);
+}
+
 /** @param {HTMLDocument} doc */
 function get_base_uri(doc) {
 	let baseURI = doc.baseURI;
@@ -225,60 +242,6 @@ function create_updated_store() {
 }
 
 /**
- * Hash using djb2
- * @param {import('types').StrictBody} value
- */
-function hash(value) {
-	let hash = 5381;
-	let i = value.length;
-
-	if (typeof value === 'string') {
-		while (i) hash = (hash * 33) ^ value.charCodeAt(--i);
-	} else {
-		while (i) hash = (hash * 33) ^ value[--i];
-	}
-
-	return (hash >>> 0).toString(36);
-}
-
-let loading = 0;
-
-const native_fetch = window.fetch;
-
-function lock_fetch() {
-	loading += 1;
-}
-
-function unlock_fetch() {
-	loading -= 1;
-}
-
-if (import.meta.env.DEV) {
-	let can_inspect_stack_trace = false;
-
-	const check_stack_trace = async () => {
-		const stack = /** @type {string} */ (new Error().stack);
-		can_inspect_stack_trace = stack.includes('check_stack_trace');
-	};
-
-	check_stack_trace();
-
-	window.fetch = (input, init) => {
-		const url = input instanceof Request ? input.url : input.toString();
-		const stack = /** @type {string} */ (new Error().stack);
-
-		const heuristic = can_inspect_stack_trace ? stack.includes('load_node') : loading;
-		if (heuristic) {
-			console.warn(
-				`Loading ${url} using \`window.fetch\`. For best results, use the \`fetch\` that is passed to your \`load\` function: https://kit.svelte.dev/docs/loading#input-fetch`
-			);
-		}
-
-		return native_fetch(input, init);
-	};
-}
-
-/**
  * @param {RequestInfo} resource
  * @param {RequestInit} [opts]
  */
@@ -297,7 +260,7 @@ function initial_fetch(resource, opts) {
 		return Promise.resolve(new Response(body, init));
 	}
 
-	return native_fetch(resource, opts);
+	return fetch(resource, opts);
 }
 
 const param_pattern = /^(\.\.\.)?(\w+)(?:=(\w+))?$/;
@@ -458,6 +421,33 @@ try {
 /** @param {number} index */
 function update_scroll_positions(index) {
 	scroll_positions[index] = scroll_state();
+}
+
+const fetch$1 = window.fetch;
+let loading = 0;
+
+if (import.meta.env.DEV) {
+	let can_inspect_stack_trace = false;
+
+	const check_stack_trace = async () => {
+		const stack = /** @type {string} */ (new Error().stack);
+		can_inspect_stack_trace = stack.includes('check_stack_trace');
+	};
+
+	check_stack_trace();
+
+	window.fetch = (input, init) => {
+		const url = input instanceof Request ? input.url : input.toString();
+		const stack = /** @type {string} */ (new Error().stack);
+
+		const heuristic = can_inspect_stack_trace ? stack.includes('load_node') : loading;
+		if (heuristic) {
+			console.warn(
+				`Loading ${url} using \`window.fetch\`. For best results, use the \`fetch\` that is passed to your \`load\` function: https://kit.svelte.dev/docs/loading#input-fetch`
+			);
+		}
+		return fetch$1(input, init);
+	};
 }
 
 /**
@@ -691,10 +681,6 @@ function create_client({ target, session, base, trailing_slash }) {
 
 		if (started) {
 			current = navigation_result.state;
-
-			if (navigation_result.props.page) {
-				navigation_result.props.page.url = url;
-			}
 
 			root.$set(navigation_result.props);
 		} else {
@@ -1006,7 +992,7 @@ function create_client({ target, session, base, trailing_slash }) {
 					add_dependency(normalized);
 
 					// prerendered pages may be served from any origin, so `initial_fetch` urls shouldn't be normalized
-					return started ? native_fetch(normalized, init) : initial_fetch(requested, init);
+					return started ? fetch$1(normalized, init) : initial_fetch(requested, init);
 				},
 				status: status ?? null,
 				error: error ?? null
@@ -1025,10 +1011,10 @@ function create_client({ target, session, base, trailing_slash }) {
 
 			if (import.meta.env.DEV) {
 				try {
-					lock_fetch();
+					loading += 1;
 					loaded = await module.load.call(null, load_input);
 				} finally {
-					unlock_fetch();
+					loading -= 1;
 				}
 			} else {
 				loaded = await module.load.call(null, load_input);
@@ -1116,7 +1102,7 @@ function create_client({ target, session, base, trailing_slash }) {
 					const is_shadow_page = has_shadow && i === a.length - 1;
 
 					if (is_shadow_page) {
-						const res = await native_fetch(
+						const res = await fetch$1(
 							`${url.pathname}${url.pathname.endsWith('/') ? '' : '/'}__data.json${url.search}`,
 							{
 								headers: {
@@ -1668,7 +1654,7 @@ function create_client({ target, session, base, trailing_slash }) {
 					}
 
 					const node = await load_node({
-						module: await components[nodes[i]](),
+						module: await nodes[i],
 						url,
 						params,
 						stuff,
@@ -1750,7 +1736,7 @@ function create_client({ target, session, base, trailing_slash }) {
  *   hydrate: {
  *     status: number;
  *     error: Error;
- *     nodes: number[];
+ *     nodes: Array<Promise<import('types').CSRComponent>>;
  *     params: Record<string, string>;
  *     routeId: string | null;
  *   };

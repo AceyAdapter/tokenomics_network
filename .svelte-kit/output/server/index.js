@@ -29,7 +29,7 @@ var __objRest = (source, exclude) => {
     }
   return target;
 };
-import { c as create_ssr_component, s as setContext, v as validate_component, m as missing_component } from "./chunks/index-5f038599.js";
+import { c as create_ssr_component, s as setContext, v as validate_component, m as missing_component } from "./chunks/index-2835083a.js";
 function afterUpdate() {
 }
 const Root = create_ssr_component(($$result, $$props, $$bindings, slots) => {
@@ -532,9 +532,9 @@ function sha256(data) {
   if (!key[0])
     precompute();
   const out = init.slice(0);
-  const array2 = encode$1(data);
-  for (let i = 0; i < array2.length; i += 16) {
-    const w = array2.subarray(i, i + 16);
+  const array = encode$1(data);
+  for (let i = 0; i < array.length; i += 16) {
+    const w = array.subarray(i, i + 16);
     let tmp;
     let a;
     let b;
@@ -651,10 +651,25 @@ function base64(bytes) {
   return result;
 }
 let csp_ready;
-const array = new Uint8Array(16);
-function generate_nonce() {
-  crypto.getRandomValues(array);
-  return base64(array);
+let generate_nonce;
+let generate_hash;
+if (typeof crypto !== "undefined") {
+  const array = new Uint8Array(16);
+  generate_nonce = () => {
+    crypto.getRandomValues(array);
+    return base64(array);
+  };
+  generate_hash = sha256;
+} else {
+  const name = "crypto";
+  csp_ready = import(name).then((crypto2) => {
+    generate_nonce = () => {
+      return crypto2.randomBytes(16).toString("base64");
+    };
+    generate_hash = (input) => {
+      return crypto2.createHash("sha256").update(input, "utf-8").digest().toString("base64");
+    };
+  });
 }
 const quoted = /* @__PURE__ */ new Set([
   "self",
@@ -700,7 +715,7 @@ class Csp {
   add_script(content) {
     if (this.#script_needs_csp) {
       if (this.#use_hashes) {
-        this.#script_src.push(`sha256-${sha256(content)}`);
+        this.#script_src.push(`sha256-${generate_hash(content)}`);
       } else if (this.#script_src.length === 0) {
         this.#script_src.push(`nonce-${this.nonce}`);
       }
@@ -709,7 +724,7 @@ class Csp {
   add_style(content) {
     if (this.#style_needs_csp) {
       if (this.#use_hashes) {
-        this.#style_src.push(`sha256-${sha256(content)}`);
+        this.#style_src.push(`sha256-${generate_hash(content)}`);
       } else if (this.#style_src.length === 0) {
         this.#style_src.push(`nonce-${this.nonce}`);
       }
@@ -868,7 +883,9 @@ async function render_response({
 			hydrate: ${resolve_opts.ssr && page_config.hydrate ? `{
 				status: ${status},
 				error: ${serialize_error(error2)},
-				nodes: [${branch.map(({ node }) => node.index).join(", ")}],
+				nodes: [
+					${(branch || []).map(({ node }) => `import(${s(options.prefix + node.entry)})`).join(",\n						")}
+				],
 				params: ${devalue(event.params)},
 				routeId: ${s(event.routeId)}
 			}` : "null"}
@@ -1408,9 +1425,6 @@ async function load_node({
       props: shadow.body || {},
       routeId: event.routeId,
       get session() {
-        if (node.module.prerender ?? options.prerender.default) {
-          throw Error("Attempted to access session from a prerendered page. Session would never be populated.");
-        }
         uses_credentials = true;
         return $session;
       },
@@ -2233,7 +2247,7 @@ function set_prerendering(value) {
 }
 const template = ({ head, body, assets: assets2, nonce }) => '<!DOCTYPE html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<link rel="icon" href="' + assets2 + '/favicon.png" />\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\n		' + head + "\n	</head>\n	<body>\n		<div>" + body + "</div>\n	</body>\n</html>\n";
 let read = null;
-set_paths({ "base": "", "assets": "" });
+set_paths({ "base": "/portfolio", "assets": "" });
 let default_protocol = "https";
 function override(settings) {
   default_protocol = settings.protocol || default_protocol;
@@ -2263,7 +2277,7 @@ class Server {
       manifest,
       method_override: { "parameter": "_method", "allowed": [] },
       paths: { base, assets },
-      prefix: assets + "/_app/immutable/",
+      prefix: assets + "/_app/",
       prerender: {
         default: true,
         enabled: true

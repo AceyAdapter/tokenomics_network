@@ -8,7 +8,7 @@ const template = ({ head, body, assets, nonce }) => "<!DOCTYPE html>\n<html lang
 
 let read = null;
 
-set_paths({"base":"","assets":""});
+set_paths({"base":"/portfolio","assets":""});
 
 let default_protocol = 'https';
 
@@ -46,7 +46,7 @@ export class Server {
 			manifest,
 			method_override: {"parameter":"_method","allowed":[]},
 			paths: { base, assets },
-			prefix: assets + '/_app/immutable/',
+			prefix: assets + '/_app/',
 			prerender: {
 				default: true,
 				enabled: true

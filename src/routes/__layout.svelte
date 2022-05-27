@@ -34,10 +34,15 @@
     <label for="my-drawer-3" class="drawer-overlay"></label> 
     <ul class="menu p-4 overflow-y-auto w-80 bg-base-100">
       <!-- Sidebar content here -->
-      <li><a on:click={() => {document.getElementById('my-drawer-3').click()}} href="/">Home</a></li>
-      <li><a on:click={() => {document.getElementById('my-drawer-3').click()}} href="/projects">Projects</a></li>
-      <li><a on:click={() => {document.getElementById('my-drawer-3').click()}} href="/nmi">NMI Portfolio</a></li>
-      
+      <div class="">
+        <li><div class="text-2xl font-bold">Nicholas Kreitz</div></li>
+        <div class="divider m-2"></div>
+        <li><a on:click={() => {document.getElementById('my-drawer-3').click()}} href="/">Home</a></li>
+        <div class="divider m-2"></div>
+        <li><a on:click={() => {document.getElementById('my-drawer-3').click()}} href="/projects">Projects</a></li>
+        <div class="divider m-2"></div>
+        <li><a on:click={() => {document.getElementById('my-drawer-3').click()}} href="/nmi">NMI Portfolio</a></li>  
+      </div>
     </ul>
     
   </div>

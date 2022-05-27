@@ -18,12 +18,20 @@
       "_index-2835083a.js"
     ],
     "css": [
-      "assets/entries/pages/__layout.svelte-da0561fc.css"
+      "assets/entries/pages/__layout.svelte-d3d0deac.css"
     ]
   },
   ".svelte-kit/runtime/components/error.svelte": {
     "file": "entries/fallbacks/error.svelte.js",
     "src": ".svelte-kit/runtime/components/error.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index-2835083a.js"
+    ]
+  },
+  "src/routes/about.svelte": {
+    "file": "entries/pages/about.svelte.js",
+    "src": "src/routes/about.svelte",
     "isEntry": true,
     "imports": [
       "_index-2835083a.js"
@@ -37,7 +45,8 @@
       "_index-2835083a.js"
     ],
     "assets": [
-      "assets/daisyui-6812931f.jpeg"
+      "assets/daisyui-6812931f.jpeg",
+      "assets/sveltekit-dd5d3dc4.png"
     ]
   },
   "_index-2835083a.js": {

@@ -31,9 +31,6 @@ const escaped = {
 function escape(html) {
   return String(html).replace(/["'&<>]/g, (match) => escaped[match]);
 }
-function escape_attribute_value(value) {
-  return typeof value === "string" ? escape(value) : value;
-}
 const missing_component = {
   $$render: () => ""
 };
@@ -80,10 +77,4 @@ function create_ssr_component(fn) {
     $$render
   };
 }
-function add_attribute(name, value, boolean) {
-  if (value == null || boolean && !value)
-    return "";
-  const assignment = boolean && value === true ? "" : `="${escape_attribute_value(value.toString())}"`;
-  return ` ${name}${assignment}`;
-}
-export { add_attribute as a, create_ssr_component as c, escape as e, missing_component as m, setContext as s, validate_component as v };
+export { create_ssr_component as c, escape as e, missing_component as m, setContext as s, validate_component as v };

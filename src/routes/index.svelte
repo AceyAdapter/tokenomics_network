@@ -1,6 +1,5 @@
 <script>
     import daisyui from '../../static/img/daisyui.jpeg';
-    import sveltekit from '../../static/img/sveltekit.png'
 </script>
 
 <div>
@@ -12,6 +11,6 @@
             <div class="text-3xl bold">+</div>
             <div class="text-orange-500">SvelteKit</div>
         </div>
-        <img src="{sveltekit}" alt="SvelteKit" class="rounded-xl w-96 shadow-xl" />
+        <img src="{daisyui}" alt="SvelteKit" class="rounded-xl w-96 shadow-xl" />
     </div>
 </div>

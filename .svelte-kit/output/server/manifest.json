@@ -18,7 +18,7 @@
       "_index-2835083a.js"
     ],
     "css": [
-      "assets/entries/pages/__layout.svelte-6f53effd.css"
+      "assets/entries/pages/__layout.svelte-4483523b.css"
     ]
   },
   ".svelte-kit/runtime/components/error.svelte": {
@@ -56,6 +56,15 @@
     "isEntry": true,
     "imports": [
       "_index-2835083a.js"
+    ],
+    "assets": [
+      "assets/blackjack_1-0943b4a5.png",
+      "assets/blackjack_2-ceffb53e.png",
+      "assets/fridge_1-f248dd56.png",
+      "assets/fridge_2-c73fe718.png",
+      "assets/crazy-crypto-d0eaac53.png",
+      "assets/egoh-site-e667f64f.png",
+      "assets/nmi-logo-4001a5fd.jpeg"
     ]
   },
   "src/routes/projects.svelte": {

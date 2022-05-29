@@ -1,6 +1,6 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-309f5d44.js",
+    "file": "start-f6ebfc93.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
@@ -26,7 +26,7 @@
       "_index-faf28bcd.js"
     ],
     "css": [
-      "assets/pages/__layout.svelte-890598c8.css"
+      "assets/pages/__layout.svelte-0a0fb448.css"
     ]
   },
   ".svelte-kit/runtime/components/error.svelte": {
@@ -62,12 +62,21 @@
     ]
   },
   "src/routes/nmi.svelte": {
-    "file": "pages/nmi.svelte-db513def.js",
+    "file": "pages/nmi.svelte-23f9f505.js",
     "src": "src/routes/nmi.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_index-faf28bcd.js"
+    ],
+    "assets": [
+      "assets/blackjack_1-0943b4a5.png",
+      "assets/blackjack_2-ceffb53e.png",
+      "assets/fridge_1-f248dd56.png",
+      "assets/fridge_2-c73fe718.png",
+      "assets/crazy-crypto-d0eaac53.png",
+      "assets/egoh-site-e667f64f.png",
+      "assets/nmi-logo-4001a5fd.jpeg"
     ]
   },
   "src/routes/projects.svelte": {

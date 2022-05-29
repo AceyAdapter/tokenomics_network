@@ -1,9 +1,9 @@
 export const manifest = {
 	appDir: "_app",
-	assets: new Set([".nojekyll","CNAME","Nicholas_Kreitz_resume.pdf","favicon.png","img/closeup.png","img/daisyui.jpeg","img/nick-color.jpeg","img/sveltekit.png"]),
+	assets: new Set([".nojekyll","CNAME","Nicholas_Kreitz_resume.pdf","favicon.png","img/blackjack_1.png","img/blackjack_2.png","img/closeup.png","img/crazy-crypto.png","img/daisyui.jpeg","img/egoh-site.png","img/fridge_1.png","img/fridge_2.png","img/nick-color.jpeg","img/nmi-logo.jpeg","img/sveltekit.png"]),
 	mimeTypes: {".pdf":"application/pdf",".png":"image/png",".jpeg":"image/jpeg"},
 	_: {
-		entry: {"file":"start-309f5d44.js","js":["start-309f5d44.js","chunks/index-faf28bcd.js","chunks/preload-helper-e4860ae8.js"],"css":[]},
+		entry: {"file":"start-f6ebfc93.js","js":["start-f6ebfc93.js","chunks/index-faf28bcd.js","chunks/preload-helper-e4860ae8.js"],"css":[]},
 		nodes: [
 			() => import('./nodes/0.js'),
 			() => import('./nodes/1.js'),

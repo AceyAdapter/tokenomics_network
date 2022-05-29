@@ -9,7 +9,7 @@
         </div>
         <div class="flex flex-row mt-10">
             <a href="/resume" class="btn btn-accent mx-4">View My Resume</a>
-            <a href="/projects" class="btn btn-secondary mx-4">View My Work</a>
+            <a href="/nmi" class="btn btn-secondary mx-4">View My Work</a>
         </div>
     </div>
 </div>

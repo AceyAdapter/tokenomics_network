@@ -23,6 +23,7 @@
           <li><a href="/">Home</a></li>
           <li><a href="/projects">Projects</a></li>
           <li><a href="/nmi">NMI Portfolio</a></li>
+          <li><a href="/resume">Resume</a></li>
           <li><a href="/contact" class="btn btn-primary rounded">Contact Me</a></li>
         </ul>
       </div>

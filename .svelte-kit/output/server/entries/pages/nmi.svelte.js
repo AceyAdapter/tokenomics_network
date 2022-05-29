@@ -7,10 +7,10 @@ var crazy_crypto = "/_app/assets/crazy-crypto-d0eaac53.png";
 var egoh_site = "/_app/assets/egoh-site-e667f64f.png";
 var nmi_logo = "/_app/assets/nmi-logo-4001a5fd.jpeg";
 const Nmi = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-  return `<div class="${"flex flex-col justify-center w-full"}"><div class="${"hero min-h-screen bg-base-200"}"><div class="${"hero-content lg:flex-row-reverse flex-col-reverse"}"><div class="${"flex-col"}"><div class="${"mockup-phone border-primary w-76"}"><div class="${"display"}"><div class="${"artboard artboard-demo phone-1"}"><div class="${"carousel"}"><div id="${"rich1"}" class="${"carousel-item w-full"}"><img${add_attribute("src", blackjack_1, 0)} alt="${"blackjack 1"}" class="${"lg:mr-8 rounded"}"></div>
-                                <div id="${"rich2"}" class="${"carousel-item w-full"}"><img${add_attribute("src", blackjack_2, 0)} alt="${"blackjack 2"}" class="${"lg:mr-8 rounded"}"></div>
-                                <div id="${"rich3"}" class="${"carousel-item w-full"}"><img${add_attribute("src", fridge_2, 0)} alt="${"fridge 1"}" class="${"lg:mr-8 rounded"}"></div>
-                                <div id="${"rich4"}" class="${"carousel-item w-full"}"><img${add_attribute("src", fridge_1, 0)} alt="${"fridge 2"}" class="${"lg:mr-8 rounded"}"></div></div></div></div></div>
+  return `<div class="${"flex flex-col justify-center w-full"}"><div class="${"hero min-h-screen bg-base-200"}"><div class="${"hero-content lg:flex-row-reverse flex-col-reverse"}"><div class="${"flex-col"}"><div class="${"mockup-phone border-primary w-76 z-40"}"><div class="${"display"}"><div class="${"artboard artboard-demo phone-1 z-30"}"><div class="${"carousel z-20"}"><div id="${"rich1"}" class="${"carousel-item w-full z-20"}"><img${add_attribute("src", blackjack_1, 0)} alt="${"blackjack 1"}" class="${"mr-8 rounded"}"></div>
+                                <div id="${"rich2"}" class="${"carousel-item w-full z-20"}"><img${add_attribute("src", blackjack_2, 0)} alt="${"blackjack 2"}" class="${"mr-8 rounded"}"></div>
+                                <div id="${"rich3"}" class="${"carousel-item w-full z-20"}"><img${add_attribute("src", fridge_2, 0)} alt="${"fridge 1"}" class="${"mr-8 rounded"}"></div>
+                                <div id="${"rich4"}" class="${"carousel-item w-full z-20"}"><img${add_attribute("src", fridge_1, 0)} alt="${"fridge 2"}" class="${"mr-8 rounded"}"></div></div></div></div></div>
                 <div class="${"flex justify-center py-2 gap-2"}"><a href="${"#rich1"}" class="${"btn btn-xs"}">1</a> 
                     <a href="${"#rich2"}" class="${"btn btn-xs"}">2</a> 
                     <a href="${"#rich3"}" class="${"btn btn-xs"}">3</a> 

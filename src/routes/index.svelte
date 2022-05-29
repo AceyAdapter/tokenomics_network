@@ -8,8 +8,8 @@
             <p class="">Hi! I'm <span class="text-primary"> Nick</span>. A <span class="text-accent">student</span>, <span class="text-secondary">programmer</span>, and enthusiast for anything creative.</p>
         </div>
         <div class="flex flex-row mt-10">
-            <div class="btn btn-accent mx-4">View My Resume</div>
-            <div class="btn btn-secondary mx-4">View My Work</div>
+            <a href="/resume" class="btn btn-accent mx-4">View My Resume</a>
+            <a href="/projects" class="btn btn-secondary mx-4">View My Work</a>
         </div>
     </div>
 </div>

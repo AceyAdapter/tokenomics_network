@@ -17,16 +17,16 @@
                         <div class="artboard artboard-demo phone-1">
                             <div class="carousel">
                                 <div id="rich1" class="carousel-item w-full">
-                                    <img src="{blackjack_1}" alt="blackjack 1" class="lg:mr-8">
+                                    <img src="{blackjack_1}" alt="blackjack 1" class="lg:mr-8 rounded">
                                 </div>
                                 <div id="rich2" class="carousel-item w-full">
-                                    <img src="{blackjack_2}" alt="blackjack 2" class="lg:mr-8">
+                                    <img src="{blackjack_2}" alt="blackjack 2" class="lg:mr-8 rounded">
                                 </div>
                                 <div id="rich3" class="carousel-item w-full">
-                                    <img src="{fridge_2}" alt="fridge 1" class="lg:mr-8">
+                                    <img src="{fridge_2}" alt="fridge 1" class="lg:mr-8 rounded">
                                 </div>
                                 <div id="rich4" class="carousel-item w-full">
-                                    <img src="{fridge_1}" alt="fridge 2" class="lg:mr-8">
+                                    <img src="{fridge_1}" alt="fridge 2" class="lg:mr-8 rounded">
                                 </div>
                             </div>
                         </div>

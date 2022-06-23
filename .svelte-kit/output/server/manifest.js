@@ -3,15 +3,14 @@ export const manifest = {
 	assets: new Set([".nojekyll","CNAME","Nicholas_Kreitz_resume.pdf","favicon.png","img/blackjack_1.png","img/blackjack_2.png","img/closeup.png","img/crazy-crypto.png","img/daisyui.jpeg","img/egoh-site.png","img/fridge_1.png","img/fridge_2.png","img/nick-color.jpeg","img/nmi-logo.jpeg","img/sveltekit.png"]),
 	mimeTypes: {".pdf":"application/pdf",".png":"image/png",".jpeg":"image/jpeg"},
 	_: {
-		entry: {"file":"start-6b2f4109.js","js":["start-6b2f4109.js","chunks/index-faf28bcd.js","chunks/preload-helper-e4860ae8.js"],"css":[]},
+		entry: {"file":"start-e46c9652.js","js":["start-e46c9652.js","chunks/index-77df80f4.js"],"css":[]},
 		nodes: [
 			() => import('./nodes/0.js'),
 			() => import('./nodes/1.js'),
 			() => import('./nodes/3.js'),
 			() => import('./nodes/2.js'),
 			() => import('./nodes/4.js'),
-			() => import('./nodes/5.js'),
-			() => import('./nodes/6.js')
+			() => import('./nodes/5.js')
 		],
 		routes: [
 			{
@@ -38,35 +37,24 @@ export const manifest = {
 			},
 			{
 				type: 'page',
-				id: "nmi",
-				pattern: /^\/nmi\/?$/,
-				names: [],
-				types: [],
-				path: "/nmi",
-				shadow: null,
-				a: [0,4],
-				b: [1]
-			},
-			{
-				type: 'page',
 				id: "projects",
 				pattern: /^\/projects\/?$/,
 				names: [],
 				types: [],
 				path: "/projects",
 				shadow: null,
-				a: [0,5],
+				a: [0,4],
 				b: [1]
 			},
 			{
 				type: 'page',
-				id: "resume",
-				pattern: /^\/resume\/?$/,
+				id: "team",
+				pattern: /^\/team\/?$/,
 				names: [],
 				types: [],
-				path: "/resume",
+				path: "/team",
 				shadow: null,
-				a: [0,6],
+				a: [0,5],
 				b: [1]
 			}
 		],

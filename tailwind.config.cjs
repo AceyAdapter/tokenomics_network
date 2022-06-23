@@ -10,20 +10,15 @@ module.exports = {
   },
   plugins: [require("daisyui")],
   daisyui: {
-    themes: [
-      {
-        mytheme: {     
-          "primary": "#fde047",
-          "secondary": "#b6e1f9",
-          "accent": "#72dd66",
-          "neutral": "#271F28",
-          "base-100": "#324653",
-          "info": "#5A91DD",
-          "success": "#1C9B5C",
-          "warning": "#EDCA4A",
-          "error": "#EF2E5F",
-        },
-      },
-    ],
+    themes: [{
+      cyberpunk: {
+        ...require("daisyui/src/colors/themes")["[data-theme=cyberpunk]"],
+        "base-100": "#121a26",
+        primary: "#91e31d",
+        secondary: "#e3d21d",
+        accent: "#d21de3",
+        "base-content": "#d9d9d9"
+      }
+    }],
   },
 }

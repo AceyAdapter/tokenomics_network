@@ -1,6 +1,6 @@
-import * as module from '../entries/pages/nmi.svelte.js';
+import * as module from '../entries/pages/projects.svelte.js';
 
 export { module };
-export const entry = 'pages/nmi.svelte-026176ca.js';
-export const js = ["pages/nmi.svelte-026176ca.js","chunks/index-faf28bcd.js"];
+export const entry = 'pages/projects.svelte-2ab0360f.js';
+export const js = ["pages/projects.svelte-2ab0360f.js","chunks/index-77df80f4.js"];
 export const css = [];
